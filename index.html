@@ -2,275 +2,851 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Canon Printer</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
   <!-- Materialize CSS -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    rel="stylesheet"
+  >
 
-  <!-- Icons -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Material Icons -->
+  <link
+    href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet"
+  >
 
   <style>
-    body {
-      background: #f5f7fa;
+    * {
+      box-sizing: border-box;
     }
 
+    body {
+      margin: 0;
+      background: #f5f7fa;
+      color: #333;
+      font-family: Arial, sans-serif;
+    }
+
+    /* NAVBAR */
     nav {
+      height: 64px;
+      line-height: 64px;
       background-color: #ffffff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .nav-wrapper {
+      display: flex;
+      align-items: center;
+    }
+
+    .brand-logo {
+      position: relative !important;
+      left: auto !important;
+      transform: none !important;
+      display: flex;
+      align-items: center;
+      height: 64px;
     }
 
     .brand-logo img {
-      height: 38px;
-      margin-top: 12px;
-      margin-right: 10px;
+      display: block;
+      max-height: 42px;
+      width: auto;
     }
 
+    /* HERO */
     .hero {
-      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
-      url('https://www.pcmatic.com/blog/wp-content/uploads/pcmatic-fallback.png');
+      background:
+        linear-gradient(
+          rgba(0, 0, 0, 0.70),
+          rgba(0, 0, 0, 0.70)
+        ),
+        url("https://www.pcmatic.com/blog/wp-content/uploads/pcmatic-fallback.png");
+
       background-size: cover;
       background-position: center;
-      padding: 110px 20px;
+      padding: 105px 20px 125px;
       text-align: center;
-      color: white;
+      color: #ffffff;
     }
 
+    .hero h3 {
+      margin: 0 0 15px;
+      font-size: 2.5rem;
+      font-weight: 600;
+    }
+
+    .hero p {
+      margin: 0;
+      font-size: 1.15rem;
+      opacity: 0.95;
+    }
+
+    /* FORM CARD */
     .form-card {
       margin-top: -70px;
+      position: relative;
+      z-index: 2;
+      max-width: 750px;
     }
 
-    .btn-main {
+    .form-card .card {
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 0;
+    }
+
+    .form-card .card-content {
+      padding: 35px 40px 40px;
+    }
+
+    .form-card .card-title {
+      color: #222;
+      font-size: 1.65rem;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    /* FORM INPUTS */
+    .form-row {
+      margin-bottom: 0;
+    }
+
+    .form-row .input-field {
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    .input-field input[type="text"],
+    .input-field input[type="email"],
+    .input-field input[type="tel"] {
+      height: 3rem;
+      margin-bottom: 0;
+    }
+
+    .input-field input:focus {
+      border-bottom: 1px solid #cb3731 !important;
+      box-shadow: 0 1px 0 0 #cb3731 !important;
+    }
+
+    .input-field input:focus + label {
+      color: #cb3731 !important;
+    }
+
+    /* PRINTER TYPE */
+    .printer-type-field {
+      margin: 10px 0 30px;
+    }
+
+    .printer-type-title {
+      margin: 0 0 18px;
+      color: #555;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    .printer-type-options {
+      display: flex;
+      align-items: center;
+      gap: 35px;
+      flex-wrap: wrap;
+    }
+
+    .printer-option {
+      display: inline-flex !important;
+      align-items: center;
+      height: 32px;
+      margin: 0 !important;
+      cursor: pointer;
+    }
+
+    .printer-option span {
+      padding-left: 30px !important;
+      line-height: 20px !important;
+      color: #444;
+      font-size: 15px;
+    }
+
+    .printer-option input[type="checkbox"] + span:before,
+    .printer-option input[type="checkbox"] + span:after {
+      top: 0;
+    }
+
+    .printer-option input[type="checkbox"]:checked + span:before {
+      border-right-color: #cb3731;
+      border-bottom-color: #cb3731;
+    }
+
+    .printer-option input[type="checkbox"]:checked + span:after {
+      border: 2px solid #cb3731;
       background-color: #cb3731;
     }
 
-    .btn-main:hover {
+    /* BUTTON */
+    .btn-main {
+      background-color: #cb3731;
+      border-radius: 4px;
+      height: 46px;
+      line-height: 46px;
+      padding: 0 25px;
+      font-weight: 500;
+      box-shadow: none;
+    }
+
+    .btn-main:hover,
+    .btn-main:focus {
       background-color: #a52d28;
+      box-shadow: 0 3px 8px rgba(203, 55, 49, 0.3);
+    }
+
+    /* WHY CHOOSE */
+    .why-section {
+      padding: 65px 20px;
+    }
+
+    .section-title {
+      margin-bottom: 40px;
+      font-weight: 500;
+    }
+
+    .feature-card {
+      height: 100%;
+      border-radius: 8px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.10);
+    }
+
+    .feature-card .card-content {
+      padding: 35px 25px;
+    }
+
+    .feature-card h5 {
+      margin-top: 15px;
+      font-size: 1.3rem;
+    }
+
+    .feature-card p {
+      color: #666;
+      line-height: 1.6;
     }
 
     .icon-color {
       color: #cb3731;
     }
 
+    /* HOW IT WORKS */
     .how-section {
       background: #eef2f5;
-      padding: 60px 20px;
-      margin-top: 30px;
+      padding: 65px 20px;
+      margin-top: 10px;
     }
 
+    .how-section h4 {
+      margin-bottom: 45px;
+    }
+
+    .how-step {
+      padding: 10px 20px;
+    }
+
+    .how-step h6 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 15px 0 10px;
+    }
+
+    .how-step p {
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* TRUST */
+    .trust-section {
+      padding: 55px 20px;
+      text-align: center;
+    }
+
+    .trust-section h5 {
+      color: #cb3731;
+      font-weight: 600;
+    }
+
+    .trust-section p {
+      max-width: 750px;
+      margin: 15px auto 0;
+      color: #666;
+      line-height: 1.7;
+    }
+
+    /* CHAT */
     .chat-section {
-      background: linear-gradient(135deg, #cb3731, #e2574c);
+      background: linear-gradient(
+        135deg,
+        #cb3731,
+        #e2574c
+      );
       padding: 70px 20px;
       color: white;
       text-align: center;
     }
 
+    .chat-section h4 {
+      margin-top: 0;
+      margin-bottom: 15px;
+    }
+
+    .chat-section p {
+      margin-bottom: 25px;
+      font-size: 1.05rem;
+    }
+
+    .chat-button {
+      color: #cb3731 !important;
+      border-radius: 4px;
+      font-weight: 500;
+      padding: 0 28px;
+    }
+
+    /* FOOTER */
     footer {
       background-color: #ffffff !important;
+      color: #333 !important;
+      padding: 22px 0;
+    }
+
+    /* MOBILE */
+    @media (max-width: 600px) {
+      nav {
+        height: 58px;
+        line-height: 58px;
+      }
+
+      .brand-logo {
+        height: 58px;
+      }
+
+      .brand-logo img {
+        max-height: 36px;
+      }
+
+      .hero {
+        padding: 75px 20px 100px;
+      }
+
+      .hero h3 {
+        font-size: 1.9rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .form-card {
+        margin-top: -55px;
+        width: calc(100% - 25px);
+      }
+
+      .form-card .card-content {
+        padding: 28px 22px 32px;
+      }
+
+      .form-card .card-title {
+        font-size: 1.35rem;
+      }
+
+      .printer-type-options {
+        gap: 15px 25px;
+      }
+
+      .why-section,
+      .how-section {
+        padding: 50px 15px;
+      }
+
+      .feature-card {
+        margin-bottom: 20px;
+      }
+
+      .how-step {
+        margin-bottom: 30px;
+      }
+
+      .chat-section {
+        padding: 55px 20px;
+      }
     }
   </style>
 
-<!-- Smartsupp Live Chat script -->
-<script type="text/javascript">
-var _smartsupp = _smartsupp || {};
-_smartsupp.key = 'b1937b836dadbde1d729303dd3bf8876732a22ee';
-window.smartsupp||(function(d) {
-  var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
-  s=d.getElementsByTagName('script')[0];c=d.createElement('script');
-  c.type='text/javascript';c.charset='utf-8';c.async=true;
-  c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
-})(document);
-</script>
+  <!-- Smartsupp Live Chat -->
+  <script type="text/javascript">
+    var _smartsupp = _smartsupp || {};
+    _smartsupp.key = 'b1937b836dadbde1d729303dd3bf8876732a22ee';
+
+    window.smartsupp || (function(d) {
+      var s, c, o = smartsupp = function() {
+        o._.push(arguments)
+      };
+
+      o._ = [];
+
+      s = d.getElementsByTagName('script')[0];
+      c = d.createElement('script');
+
+      c.type = 'text/javascript';
+      c.charset = 'utf-8';
+      c.async = true;
+      c.src = 'https://www.smartsuppchat.com/loader.js?';
+
+      s.parentNode.insertBefore(c, s);
+    })(document);
+  </script>
 
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<nav>
-  <div class="nav-wrapper container">
-    <a href="#" class="brand-logo black-text">
-      <img src="https://resource-wangsu.helplook.net/docker_production/r8g7am/nav_logo/site_logo?rand=756037177">
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-wrapper container">
+
+      <a href="#" class="brand-logo">
+        <img
+          src="https://resource-wangsu.helplook.net/docker_production/r8g7am/nav_logo/site_logo?rand=756037177"
+          alt="Canon Printer"
+        >
+      </a>
+
+    </div>
+  </nav>
+
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <h3>Fix, Clean &amp; Optimize Your PC</h3>
+
+    <p>
+      Trusted by millions to improve performance and security
+    </p>
+
+  </section>
+
+
+  <!-- FORM -->
+  <div class="container form-card">
+
+    <div class="card z-depth-3">
+
+      <div class="card-content">
+
+        <div class="card-title">
+          <b>Get Started With Canon Printer</b>
+        </div>
+
+        <form
+          action="https://api.web3forms.com/submit"
+          method="POST"
+        >
+
+          <input
+            type="hidden"
+            name="access_key"
+            value="3483808b-2a59-4431-b7fc-000a1a8531b0"
+          >
+
+          <input
+            type="hidden"
+            name="subject"
+            value="Canon Printer Lead"
+          >
+
+          <input
+            type="hidden"
+            name="redirect"
+            value="https://pcmaticpro.github.io/loading.html"
+          >
+
+
+          <div class="row form-row">
+
+            <!-- FULL NAME -->
+            <div class="input-field col s12">
+
+              <input
+                id="full_name"
+                name="name"
+                type="text"
+                required
+              >
+
+              <label for="full_name">
+                Full Name
+              </label>
+
+            </div>
+
+
+            <!-- EMAIL -->
+            <div class="input-field col s12">
+
+              <input
+                id="email"
+                name="email"
+                type="email"
+                required
+              >
+
+              <label for="email">
+                Email Address
+              </label>
+
+            </div>
+
+
+            <!-- PHONE -->
+            <div class="input-field col s12">
+
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                required
+              >
+
+              <label for="phone">
+                Phone Number
+              </label>
+
+            </div>
+
+
+            <!-- PRINTER MODEL -->
+            <div class="input-field col s12">
+
+              <input
+                id="printer_model"
+                name="Printer model"
+                type="text"
+                required
+              >
+
+              <label for="printer_model">
+                Printer Model
+              </label>
+
+            </div>
+
+
+            <!-- PRINTER TYPE -->
+            <div class="col s12 printer-type-field">
+
+              <p class="printer-type-title">
+                Printer Type
+              </p>
+
+              <div class="printer-type-options">
+
+                <label class="printer-option">
+
+                  <input
+                    type="checkbox"
+                    name="Printer Type[]"
+                    value="Wired"
+                  >
+
+                  <span>Wired</span>
+
+                </label>
+
+
+                <label class="printer-option">
+
+                  <input
+                    type="checkbox"
+                    name="Printer Type[]"
+                    value="Wireless"
+                  >
+
+                  <span>Wireless</span>
+
+                </label>
+
+
+                <label class="printer-option">
+
+                  <input
+                    type="checkbox"
+                    name="Printer Type[]"
+                    value="Both"
+                  >
+
+                  <span>Both</span>
+
+                </label>
+
+              </div>
+
+            </div>
+
+
+            <!-- SUBMIT BUTTON -->
+            <div class="col s12 center">
+
+              <button
+                class="btn waves-effect waves-light btn-main"
+                type="submit"
+              >
+
+                Get Started
+
+                <i class="material-icons right">
+                  send
+                </i>
+
+              </button>
+
+            </div>
+
+          </div>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- WHY CHOOSE -->
+  <section class="why-section">
+
+    <div class="container">
+
+      <h4 class="center section-title">
+        Why Choose Canon Printer?
+      </h4>
+
+      <div class="row">
+
+        <div class="col s12 m4">
+
+          <div class="card center feature-card">
+
+            <div class="card-content">
+
+              <i class="material-icons large icon-color">
+                print
+              </i>
+
+              <h5>
+                High-Quality Printing
+              </h5>
+
+              <p>
+                Enjoy sharp, clear, and professional-quality
+                prints for everyday needs.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="col s12 m4">
+
+          <div class="card center feature-card">
+
+            <div class="card-content">
+
+              <i class="material-icons large icon-color">
+                speed
+              </i>
+
+              <h5>
+                Fast &amp; Efficient
+              </h5>
+
+              <p>
+                Print documents quickly and efficiently with
+                reliable Canon printer performance.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="col s12 m4">
+
+          <div class="card center feature-card">
+
+            <div class="card-content">
+
+              <i class="material-icons large icon-color">
+                settings
+              </i>
+
+              <h5>
+                Easy to Use
+              </h5>
+
+              <p>
+                Set up, manage, and maintain your Canon printer
+                with simple and convenient controls.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- HOW IT WORKS -->
+  <section class="how-section">
+
+    <div class="container center">
+
+      <h4>
+        How It Works
+      </h4>
+
+      <div class="row">
+
+        <div class="col s12 m4 how-step">
+
+          <i class="material-icons large icon-color">
+            person
+          </i>
+
+          <h6>
+            Submit Request
+          </h6>
+
+          <p>
+            Fill in your details and describe your issue.
+          </p>
+
+        </div>
+
+
+        <div class="col s12 m4 how-step">
+
+          <i class="material-icons large icon-color">
+            support_agent
+          </i>
+
+          <h6>
+            Get Assistance
+          </h6>
+
+          <p>
+            Our expert will contact you shortly.
+          </p>
+
+        </div>
+
+
+        <div class="col s12 m4 how-step">
+
+          <i class="material-icons large icon-color">
+            check_circle
+          </i>
+
+          <h6>
+            Problem Solved
+          </h6>
+
+          <p>
+            We ensure your printer runs smoothly again.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- TRUST -->
+  <section class="trust-section">
+
+    <div class="container">
+
+      <h5>
+        Trusted by Millions Worldwide
+      </h5>
+
+      <p>
+        Canon Printer is a popular printing solution trusted
+        by users worldwide for reliable, high-quality printing
+        and efficient performance.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- CHAT -->
+  <section class="chat-section">
+
+    <h4>
+      Need Immediate Help?
+    </h4>
+
+    <p>
+      Chat with our support representative and resolve your
+      issue instantly.
+    </p>
+
+    <a
+      href="javascript:void(0)"
+      class="btn white waves-effect waves-light chat-button"
+      onclick="smartsupp('chat:open')"
+    >
+      Chat Now
     </a>
-  </div>
-</nav>
 
-<!-- HERO -->
-<div class="hero">
-  <h3>Fix, Clean & Optimize Your PC</h3>
-  <p>Trusted by millions to improve performance and security</p>
-</div>
-
-<!-- FORM -->
-<div class="container form-card">
-  <div class="card z-depth-3">
-    <div class="card-content">
-      <span class="card-title"><b>Get Started With Canon Printer</b></span>
-
-      <form action="https://api.web3forms.com/submit" method="POST">
-
-        <!-- ACCESS KEY -->
-        <input type="hidden" name="access_key" value="3483808b-2a59-4431-b7fc-000a1a8531b0">
-
-        <!-- SUBJECT -->
-        <input type="hidden" name="subject" value="Canon Printer Lead">
-
-        <!-- REDIRECT -->
-        <input type="hidden" name="redirect" value="https://pcmaticpro.github.io/loading.html">
-
-        <!-- NAME -->
-        <div class="input-field col s12">
-          <input name="name" type="text" required>
-          <label>Full Name</label>
-        </div>
-
-        <!-- EMAIL -->
-        <div class="input-field col s12">
-          <input name="email" type="email" required>
-          <label>Email Address</label>
-        </div>
-
-        <!-- PHONE -->
-        <div class="input-field col s12">
-          <input name="phone" type="tel" required>
-          <label>Phone Number</label>
-        </div>
-
-        <!-- PRINTER MODEL -->
-        <div class="input-field col s12">
-          <input name="Printer model" type="text" required>
-          <label>Printer Model</label>
-        </div>
-
-        <!-- PRINTER TYPE -->
-        <div class="input-field col s12">
-          <p style="margin-bottom: 10px;">Printer Type</p>
-
-          <label style="margin-right: 20px;">
-            <input type="checkbox" name="Printer Type[]" value="Wired">
-            <span>Wired</span>
-          </label>
-
-          <label style="margin-right: 20px;">
-            <input type="checkbox" name="Printer Type[]" value="Wireless">
-            <span>Wireless</span>
-          </label>
-
-          <label>
-            <input type="checkbox" name="Printer Type[]" value="Both">
-            <span>Both</span>
-          </label>
-        </div>
-
-        <!-- BUTTON -->
-        <div class="col s12 center">
-          <button class="btn waves-effect waves-light btn-main" type="submit">
-            Get Started
-            <i class="material-icons right">send</i>
-          </button>
-        </div>
-
-      </form>
-    </div>
-  </div>
-</div>
-    </div>
-  </div>
-</div>
-
-<!-- WHY CHOOSE -->
-<div class="container section">
-  <h4 class="center">Why Choose Canon Printer?</h4>
-
-  <div class="row">
-
-    <div class="col s12 m4">
-      <div class="card center">
-        <div class="card-content">
-          <i class="material-icons large icon-color">print</i>
-          <h5>High-Quality Printing</h5>
-          <p>Enjoy sharp, clear, and professional-quality prints for everyday needs.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col s12 m4">
-      <div class="card center">
-        <div class="card-content">
-          <i class="material-icons large icon-color">speed</i>
-          <h5>Fast &amp; Efficient</h5>
-          <p>Print documents quickly and efficiently with reliable Canon printer performance.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col s12 m4">
-      <div class="card center">
-        <div class="card-content">
-          <i class="material-icons large icon-color">settings</i>
-          <h5>Easy to Use</h5>
-          <p>Set up, manage, and maintain your Canon printer with simple and convenient controls.</p>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
+  </section>
 
 
-<!-- HOW IT WORKS -->
-<div class="how-section">
-  <div class="container center">
-    <h4>How It Works</h4>
+  <!-- FOOTER -->
+  <footer>
 
-    <div class="row">
+    <div class="container center">
 
-      <div class="col s12 m4">
-        <i class="material-icons large icon-color">person</i>
-        <h6>Submit Request</h6>
-        <p>Fill in your details and describe your issue.</p>
-      </div>
-
-      <div class="col s12 m4">
-        <i class="material-icons large icon-color">support_agent</i>
-        <h6>Get Assistance</h6>
-        <p>Our expert will contact you shortly.</p>
-      </div>
-
-      <div class="col s12 m4">
-        <i class="material-icons large icon-color">check_circle</i>
-        <h6>Problem Solved</h6>
-        <p>We ensure your printer runs smoothly again.</p>
-      </div>
+      © 2026 Canon Printer Docs
 
     </div>
-  </div>
-</div>
 
-<!-- TRUST -->
-<div class="container section center">
-  <h5 style="color:#cb3731;">Trusted by Millions Worldwide</h5>
-  <p>Canon Printer is a popular printing solution trusted by users worldwide for reliable, high-quality printing and efficient performance.</p>
-</div>
+  </footer>
 
-<!-- CHAT -->
-<div class="chat-section">
-  <h4>Need Immediate Help?</h4>
-  <p>Chat with our support representative and resolve your issue instantly.</p>
-  <a class="btn white red-text waves-effect waves-light"
-     onclick="smartsupp('chat:open')">
-    Chat Now
-  </a>
-</div>
 
-<!-- FOOTER -->
-<footer class="page-footer" style="background-color:#ffffff !important;">
-  <div class="container center" style="color:#000000 !important;">
-    © 2026 Canon Printer Docs
-  </div>
-</footer>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <!-- Materialize JS -->
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js">
+  </script>
 
 </body>
 </html>
